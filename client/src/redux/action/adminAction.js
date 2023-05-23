@@ -7,7 +7,7 @@ import {
 } from '../actionTypes'
 
 // const url = "http://localhost:5000"
-const url = "https://studentportal-tdr0.onrender.com/"
+const url = "https://studentportal-tdr0.onrender.com"
 
 const setAdmin = (data) => {
     return {
