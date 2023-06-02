@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose, { model } from 'mongoose'
 const { Schema } = mongoose
 
 const markSchema = new Schema({
@@ -33,4 +33,4 @@ const markSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('mark', markSchema)
+export default model('mark', markSchema)

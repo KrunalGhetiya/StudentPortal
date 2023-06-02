@@ -1,3 +1,1 @@
-module.exports = {
-    secretOrKey: 'secretHaiKisiKoBtanaMt'
-};
+export const secretOrKey = 'secretHaiKisiKoBtanaMt';

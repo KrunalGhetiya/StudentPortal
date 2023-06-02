@@ -1,23 +1,23 @@
-const JwtStrategy = require('passport-jwt').Strategy;
-const ExtractJwt = require('passport-jwt').ExtractJwt;
-const Faculty = require('../models/faculty')
-const Student = require('../models/student')
-const Admin = require('../models/admin')
+import { Strategy as JwtStrategy } from 'passport-jwt';
+import { ExtractJwt } from 'passport-jwt';
+import { findById } from '../models/faculty';
+import { findById as _findById } from '../models/student';
+import { findById as __findById } from '../models/admin';
 
 
-const keys = require('./key');
+import { secretOrKey } from './key';
 
 const opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = keys.secretOrKey;
+opts.secretOrKey = secretOrKey;
 
-module.exports = passport => {
+export default passport => {
     passport.use(
         new JwtStrategy(opts, async (jwt_payload, done) => {
             //console.log(jwt_payload)
-            const faculty = await Student.findById(jwt_payload.id)
-            const student = await Faculty.findById(jwt_payload.id)
-            const admin = await Admin.findById(jwt_payload.id)
+            const faculty = await _findById(jwt_payload.id)
+            const student = await findById(jwt_payload.id)
+            const admin = await __findById(jwt_payload.id)
             if (faculty) {
                 return done(null, faculty)
             }
